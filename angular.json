@@ -117,8 +117,13 @@
               "devServerTarget": "task-Oct06-app:serve:production"
             }
           }
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {}
         }
       }
-    }},
+    }
+  },
   "defaultProject": "task-Oct06-app"
 }
