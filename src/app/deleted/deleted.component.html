@@ -1,0 +1,18 @@
+<div class="container">
+  <div>
+    <span class="h3">Deleted Students' List</span>
+    <span>
+      <button
+        class="btn btn-warning text-white"
+        (click)="undoSelectedDeletes()"
+        style="float: right"
+      >
+        Undo Selected Deletes
+      </button>
+    </span>
+  </div>
+
+  <div>
+    <app-table [students]="studentsData" [isDeleted]="true"></app-table>
+  </div>
+</div>

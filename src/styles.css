@@ -1,1 +1,12 @@
 /* You can add global styles to this file, and also import other style files */
+
+/* Invalid Input Style */
+
+.form-control.ng-touched.ng-invalid {
+  border: 2px solid red;
+}
+
+img {
+  max-height: 50px;
+  max-width: 50px;
+}

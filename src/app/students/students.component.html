@@ -1,0 +1,77 @@
+<div class="container">
+  <div>
+    <span class="h3">Students' List</span>
+    <span>
+      <div class="input-group w-25" style="float: right">
+        <input
+          type="text"
+          class="form-control"
+          placeholder="Student's Name"
+          aria-label="Student's Name"
+          aria-describedby="button-addon2"
+          [(ngModel)]="searchName"
+          (keyup.enter)="search()"
+        />
+        <div class="input-group-append">
+          <button
+            class="btn btn-outline-secondary"
+            type="button"
+            id="button-addon2"
+            (click)="search()"
+          >
+            Search
+          </button>
+        </div>
+      </div>
+    </span>
+    <span>
+      <button
+        class="btn btn-success mr-3"
+        style="float: right"
+        data-toggle="modal"
+        data-target="#exampleModal1"
+        [disabled]="searchIsOn"
+      >
+        <i class="fas fa-plus"></i>&nbsp;Add Student
+      </button></span
+    >
+    <span>
+      <button
+        class="btn btn-warning text-white mr-3"
+        (click)="deleteSelected()"
+        style="float: right"
+        [disabled]="searchIsOn"
+      >
+        Delete Selected
+      </button>
+    </span>
+    <app-form></app-form>
+  </div>
+
+  <div *ngIf="isFound === false" class="text-center mt-5">
+    <div class="my-2">
+      <i
+        class="fas fa-exclamation-triangle text-warning"
+        style="font-size: 60px"
+      ></i>
+    </div>
+    <div class="h5 my-2">
+      <p>No Match Found</p>
+    </div>
+    <div>
+      <button class="btn btn-outline-success" (click)="back()">Go Back</button>
+    </div>
+  </div>
+
+  <div *ngIf="isFound === true">
+    <app-table
+      [students]="studentsData"
+      [isDeleted]="false"
+      [searchIsOn]="searchIsOn"
+    ></app-table>
+
+    <div *ngIf="searchIsOn === true" class="text-center my-4">
+      <button class="btn btn-outline-success" (click)="back()">Go Back</button>
+    </div>
+  </div>
+</div>

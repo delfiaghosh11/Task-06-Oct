@@ -1,0 +1,139 @@
+<table class="table table-striped my-5">
+  <thead class="thead-dark">
+    <tr>
+      <th scope="col">Roll</th>
+      <th scope="col">Name</th>
+      <th scope="col">City</th>
+      <th scope="col">College</th>
+      <th scope="col">Qualification</th>
+      <th scope="col">Gender</th>
+      <th scope="col">Status</th>
+      <th scope="col">Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let student of students; let i = index">
+      <th scope="row">{{ student.roll }}</th>
+      <td>
+        <span *ngIf="!editMode[i]">{{ student.name }}</span>
+        <span *ngIf="editMode[i]"
+          ><input
+            type="text"
+            [(ngModel)]="student.name"
+            class="form-control"
+            required
+          />
+        </span>
+      </td>
+      <td>
+        <span *ngIf="!editMode[i]">{{ student.city }}</span>
+        <span *ngIf="editMode[i]"
+          ><input
+            type="text"
+            [(ngModel)]="student.city"
+            class="form-control"
+            required
+          />
+        </span>
+      </td>
+      <td>
+        <span *ngIf="!editMode[i]">{{ student.college }}</span>
+        <span *ngIf="editMode[i]"
+          ><input
+            type="text"
+            [(ngModel)]="student.college"
+            class="form-control"
+            required
+          />
+        </span>
+      </td>
+      <td>
+        <span *ngIf="!editMode[i]">{{ student.qualification }}</span>
+        <span *ngIf="editMode[i]"
+          ><input
+            type="text"
+            [(ngModel)]="student.qualification"
+            class="form-control"
+            required
+          />
+        </span>
+      </td>
+      <td>
+        <span *ngIf="!editMode[i]">
+          <img
+            *ngIf="student.gender === 'female'"
+            src="{{ femaleImgUrl }}"
+            alt="Female Avatar"
+          />
+          <img
+            *ngIf="student.gender === 'male'"
+            src="{{ maleImgUrl }}"
+            alt="Male Avatar"
+          />
+        </span>
+        <span *ngIf="editMode[i]">
+          <div class="form-check">
+            <label class="form-check-label mr-5" for="exampleRadios1">
+              <input
+                name="gender"
+                class="form-check-input"
+                type="radio"
+                id="female"
+                value="female"
+                (change)="setGender($event)"
+              /><i
+                class="fas fa-female text-success"
+                style="font-size: 26px"
+              ></i
+              >&nbsp;Female
+            </label>
+            <label class="form-check-label" for="exampleRadios2">
+              <input
+                name="gender"
+                class="form-check-input"
+                type="radio"
+                id="male"
+                value="male"
+                (change)="setGender($event)"
+              /><i class="fas fa-male text-success" style="font-size: 26px"></i
+              >&nbsp;Male
+            </label>
+          </div>
+        </span>
+      </td>
+      <td>
+        <input type="checkbox" [(ngModel)]="student.isCompleted" />
+      </td>
+      <td>
+        <i
+          *ngIf="isDeleted === false && !editMode[i]"
+          class="fas fa-pen text-warning mr-4"
+          (click)="editRow(student, i)"
+          style="cursor: pointer"
+        ></i>
+        <i
+          *ngIf="isDeleted === false && editMode[i]"
+          class="fas fa-save text-info mr-4"
+          (click)="saveRow(student, i)"
+          style="cursor: pointer"
+        ></i>
+        <button
+          *ngIf="isDeleted === false && searchIsOn === false"
+          class="btn btn-sm btn-danger"
+          (click)="delete(i, student)"
+          [disabled]="!student.isCompleted"
+        >
+          Delete
+        </button>
+        <button
+          *ngIf="isDeleted === true"
+          class="btn btn-info"
+          (click)="undoDelete(i, student)"
+          [disabled]="!student.isCompleted"
+        >
+          Undo Delete
+        </button>
+      </td>
+    </tr>
+  </tbody>
+</table>

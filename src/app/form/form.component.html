@@ -1,0 +1,192 @@
+<div>
+  <!-- Modal -->
+  <div
+    class="modal fade"
+    id="exampleModal1"
+    tabindex="-1"
+    aria-labelledby="exampleModalLabel1"
+    aria-hidden="true"
+  >
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel1">
+            Add Student Details
+          </h5>
+          <button
+            type="button"
+            class="close"
+            data-dismiss="modal"
+            aria-label="Close"
+          >
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <form [formGroup]="form" (ngSubmit)="submit(form)" class="mt-3">
+            <!-- Student Name -->
+            <div class="form-group">
+              <input
+                formControlName="studentName"
+                type="text"
+                name="studentName"
+                id="studentName"
+                class="form-control"
+                placeholder="Student Name"
+              />
+              <div *ngIf="studentName.touched && studentName.invalid">
+                <div *ngIf="studentName.errors.required" class="text-danger">
+                  Please enter the Student Name.
+                </div>
+                <div
+                  *ngIf="
+                    studentName.errors.minlength || studentName.errors.maxlength
+                  "
+                  class="text-danger"
+                >
+                  Accepts Alphabets, space & Min 5 to Max 30 Char
+                </div>
+                <div *ngIf="studentName.errors.pattern" class="text-danger">
+                  Accepts Alphabets, space & Min 5 to Max 30 Char
+                </div>
+              </div>
+            </div>
+
+            <!-- Student City -->
+            <div class="form-group">
+              <input
+                formControlName="studentCity"
+                type="text"
+                name="studentCity"
+                id="studentCity"
+                class="form-control"
+                placeholder="Student's City"
+              />
+              <div *ngIf="studentCity.touched && studentCity.invalid">
+                <div *ngIf="studentCity.errors.required" class="text-danger">
+                  Please enter the City Name.
+                </div>
+                <div *ngIf="studentCity.errors.pattern" class="text-danger">
+                  Invalid City Name
+                </div>
+              </div>
+            </div>
+
+            <!-- Student College -->
+            <div class="form-group">
+              <input
+                formControlName="studentCollege"
+                type="text"
+                name="studentCollege"
+                id="studentCollege"
+                class="form-control"
+                placeholder="College"
+              />
+              <div *ngIf="studentCollege.touched && studentCollege.invalid">
+                <div *ngIf="studentCollege.errors.required" class="text-danger">
+                  Please enter the College.
+                </div>
+                <div
+                  *ngIf="
+                    studentCollege.errors.minlength ||
+                    studentCollege.errors.maxlength
+                  "
+                  class="text-danger"
+                >
+                  Accepts Alphabets, space & Min 5 to Max 50 Char
+                </div>
+                <div *ngIf="studentCollege.errors.pattern" class="text-danger">
+                  Invalid College.
+                </div>
+              </div>
+            </div>
+
+            <!-- Qualification -->
+            <div class="form-group">
+              <input
+                formControlName="qualification"
+                type="text"
+                name="qualification"
+                id="qualification"
+                class="form-control"
+                placeholder="Student Qualification"
+              />
+              <div *ngIf="qualification.touched && qualification.invalid">
+                <div *ngIf="qualification.errors.required" class="text-danger">
+                  Please enter the Qualification.
+                </div>
+                <div
+                  *ngIf="
+                    qualification.errors.minlength ||
+                    qualification.errors.maxlength
+                  "
+                  class="text-danger"
+                >
+                  Accepts Alphabets, space & Min 2 to Max 30 Char
+                </div>
+                <div *ngIf="qualification.errors.pattern" class="text-danger">
+                  Accepts Alphabets, space & Min 2 to Max 30 Char
+                </div>
+              </div>
+            </div>
+
+            <!-- Gender -->
+            <div class="form-group">
+              <div class="form-check">
+                <label class="form-check-label mr-5" for="exampleRadios1">
+                  <input
+                    name="gender"
+                    class="form-check-input"
+                    type="radio"
+                    id="female"
+                    value="female"
+                    formControlName="gender"
+                    (change)="setGender($event)"
+                  /><i
+                    class="fas fa-female text-warning"
+                    style="font-size: 26px"
+                  ></i
+                  >&nbsp;Female
+                </label>
+                <label class="form-check-label" for="exampleRadios2">
+                  <input
+                    name="gender"
+                    class="form-check-input"
+                    type="radio"
+                    id="male"
+                    value="male"
+                    formControlName="gender"
+                    (change)="setGender($event)"
+                  /><i
+                    class="fas fa-male text-warning"
+                    style="font-size: 26px"
+                  ></i
+                  >&nbsp;Male
+                </label>
+              </div>
+            </div>
+
+            <!-- Json Data -->
+            <!-- <p>
+                  {{ form.value | json }}
+              </p> -->
+
+            <button
+              type="submit"
+              class="btn btn-primary mr-3"
+              [disabled]="form.invalid"
+            >
+              Add Student
+            </button>
+          </form>
+        </div>
+        <!-- <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">
+            Close
+          </button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div> -->
+      </div>
+    </div>
+  </div>
+</div>
