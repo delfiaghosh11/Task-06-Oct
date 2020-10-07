@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
   providedIn: 'root',
 })
 export class DataService {
+  private url = 'https://jsonblob.com/api/f0b33ee5-03a8-11eb-909d-27a9d4f5c8fa';
   private students: any[];
   private deletedStudents = new Array();
   private event = new EventEmitter();
@@ -15,11 +16,9 @@ export class DataService {
   constructor(private http: HttpClient) {}
 
   getJSON(): any {
-    return this.http
-      .get('https://jsonblob.com/api/f0b33ee5-03a8-11eb-909d-27a9d4f5c8fa')
-      .subscribe((data) => {
-        this.setStudents(data);
-      });
+    return this.http.get(this.url).subscribe((data) => {
+      this.setStudents(data);
+    });
   }
 
   getStudents() {
