@@ -21,7 +21,7 @@ export class TableComponent implements OnInit {
     this.femaleImgUrl =
       'https://www.iconfinder.com/data/icons/business-avatar-1/512/9_avatar-512.png';
     this.maleImgUrl =
-      'https://cdn.icon-icons.com/icons2/1879/PNG/512/iconfinder-3-avatar-2754579_120516.png';
+      'https://ziakapoor.com/wp-content/uploads/2020/03/zia-kapoor-escorts-happy-customers-1.png';
   }
 
   ngOnInit(): void {}
